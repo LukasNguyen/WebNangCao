@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Web_API.Models;
 
 namespace Web_API.Controllers
 {
@@ -16,11 +17,17 @@ namespace Web_API.Controllers
             db = new QuanLyDAL();
         }
         [HttpPost]
-        public IHttpActionResult PostEbook(EbookViewModel ebook)
+        public IHttpActionResult MoLopHocPhan(LopHocPhanViewModel lhp)
         {
             if (!ModelState.IsValid)
                 return BadRequest("Dữ liệu chưa hợp lệ!");
-            if (ebdal.InsertEbook(new Model.Ebook()
+            if (lhp.slSinhVienNhoNhat < 0 || lhp.slSinhVienLonNhat < 0)
+                return BadRequest("Số lượng sinh viên không được nhỏ hơn 0");
+            if (lhp.slSinhVienNhoNhat >= lhp.slSinhVienLonNhat)
+                return BadRequest("Số lượng sinh viên lớn nhất phải lớn hơn số lượng sinh viên nhỏ nhất");
+            if(lhp.ngayBatDau>=lhp.ngayKetThuc)
+                return BadRequest("Ngày bắt đầu học môn không thể lớn hơn hoặc bằng ngày hết môn");
+            if (db.MoLopHocPhan(new Model.LopHocPhan())
             {
                 BookId = ebook.BookId,
                 BookTitle = ebook.BookTitle,

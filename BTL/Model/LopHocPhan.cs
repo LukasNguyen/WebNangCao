@@ -20,12 +20,13 @@ namespace Model
         [Required]
         [Column(TypeName = "int")]
         public int maMH { get; set; }
+        [ForeignKey("Hocky")]
         [Column(TypeName = "int")]
         public int hocKy { get; set; }
-        [ForeignKey("nienKhoa")]
+        [ForeignKey("Hocky")]
         [Column(TypeName = "varchar")]
         [StringLength(10)]
-        public int nienKhoa { get; set; }
+        public string nienKhoa { get; set; }
         [Column(TypeName = "datetime")]
         [DataType(DataType.DateTime)]
         public DateTime ngayBatDau { get; set; }
@@ -40,7 +41,6 @@ namespace Model
         public virtual MonHoc MonHoc { get; set; }
         [ForeignKey("maGV")]
         public virtual GiangVien GiangVien { get; set; }
-        [ForeignKey("hocKy")]
         public virtual HocKy Hocky { get; set; }
         public virtual List<KetQuaHocTap> KetQuaHocTaps { get; set; }
     }
