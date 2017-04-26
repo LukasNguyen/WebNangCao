@@ -14,9 +14,9 @@ namespace DAL
         {
             db = new QLHocPhanContext();
         }
-        public bool MoLopHocPhan(LopHocPhan lhp)
-        {
+        //public bool MoLopHocPhan(LopHocPhan lhp)
+        //{
 
-        }
+        //}
     }
 }

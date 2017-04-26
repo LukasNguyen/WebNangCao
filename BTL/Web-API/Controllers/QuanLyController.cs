@@ -17,6 +17,7 @@ namespace Web_API.Controllers
             db = new QuanLyDAL();
         }
         [HttpPost]
+        //Chưa xong
         public IHttpActionResult MoLopHocPhan(LopHocPhanViewModel lhp)
         {
             if (!ModelState.IsValid)
@@ -27,16 +28,17 @@ namespace Web_API.Controllers
                 return BadRequest("Số lượng sinh viên lớn nhất phải lớn hơn số lượng sinh viên nhỏ nhất");
             if(lhp.ngayBatDau>=lhp.ngayKetThuc)
                 return BadRequest("Ngày bắt đầu học môn không thể lớn hơn hoặc bằng ngày hết môn");
-            if (db.MoLopHocPhan(new Model.LopHocPhan())
-            {
-                BookId = ebook.BookId,
-                BookTitle = ebook.BookTitle,
-                Introduction = ebook.Introduction,
-                AuthorName = ebook.AuthorName,
-                PublisherName = ebook.PublisherName
-            }))
-                return Ok();
-            return BadRequest("nhập lại bookId");
+            return Ok();
+            //if (db.MoLopHocPhan(new Model.LopHocPhan())
+            //{
+            //    BookId = ebook.BookId,
+            //    BookTitle = ebook.BookTitle,
+            //    Introduction = ebook.Introduction,
+            //    AuthorName = ebook.AuthorName,
+            //    PublisherName = ebook.PublisherName
+            //}))
+            //    return Ok();
+            //return BadRequest("nhập lại bookId");
         }
     }
 }
